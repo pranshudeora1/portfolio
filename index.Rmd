@@ -1,0 +1,28 @@
+---
+title: "My Data Analytics Portfolio"
+---
+
+## Welcome to My Portfolio
+
+Hello, I'm Pranshu Deora, a data analytics student passionate about transforming raw data into meaningful insights that drive business decisions.
+
+### What I Do
+
+- **Data Analysis**: Cleaning, transforming, and analyzing complex datasets
+- **Data Visualization**: Creating compelling charts and dashboards with ggplot2
+- **Statistical Analysis**: Applying statistical methods to uncover patterns
+- **Professional Reporting**: Building reproducible reports with R Markdown
+
+### Technical Skills
+
+**Tools & Technologies**: R, RStudio, R Markdown, ggplot2, dplyr, tidyr
+**Data Sources**: CSV files, APIs, government open data
+**Analysis**: Data cleaning, exploratory analysis, statistical testing
+
+### Navigate My Portfolio
+
+Use the menu above to:
+- Learn more [about me](about.rmd)
+- View my [data analysis projects](projects.rmd)
+
+---

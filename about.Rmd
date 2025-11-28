@@ -1,0 +1,47 @@
+---
+title: "About Me"
+---
+
+## Background
+
+I'm a dedicated data analytics student at VIU, developing expertise in statistical analysis, data visualization, and business intelligence. I'm passionate about using data to solve real-world problems and drive informed decision-making.
+
+## Education
+
+**Vancouver Island University**  
+Bachelor of Business Administration
+Expected Graduation: 2028
+
+**Relevant Coursework**:
+- Data Analysis for E-Management
+- Business Statistics
+- Information Systems
+- Statistical Computing with R
+
+## Technical Skills
+
+**Programming & Tools**:
+- R Programming
+- RStudio
+- R Markdown
+- Git & GitHub
+
+**Data Analysis**:
+- Data cleaning and preprocessing
+- Exploratory data analysis
+- Statistical analysis
+- Data visualization
+
+**Data Visualization**:
+- ggplot2
+- Base R plotting
+- Interactive visualizations
+
+## Contact Information
+
+Feel free to reach out for collaborations or opportunities:
+
+- **Email**: pranshudeora@gmail.com
+- **GitHub**: https://github.com/pranshudeora
+
+---

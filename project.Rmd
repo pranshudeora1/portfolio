@@ -1,0 +1,134 @@
+---
+title: "Introduction to E-Business Analytics"
+subtitle: "Performance Metrics Report"
+author: "Pranshu Deora - 668148844"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Executive Summary {-}
+
+This report examines daily website performance using a dataset adapted from air quality. This analysis shows a moderate positive relationship between user engagement and website performance. Missing values have appeared in the performance metric, which might need attention in reporting. My results demonstrate that higher engagement generall occurs with stronger performance. For managers, the findings emphasize the importance of monitoring engagement trends and addressing missing data issues when making important decisions for website optimization.
+
+# Question 1: Website Performance Analysis
+
+```{r}
+# Create website performance dataset with business terminology
+webperfo <- data.frame(
+  engagement = airquality$Temp,
+  performance = airquality$Ozone,
+  server_load = airquality$Wind
+)
+```
+
+## 1(a) Use head() to look at the first few rows
+```{r}
+head(webperfo)
+```
+
+I see that the dataset has 3 columns: engagement, performance, and server_load. Viewing only the first rows helps us quickly understand the structure without having to overwhelme the console by printing all the data at once. 
+
+## 1(b) Use summary() to get summary statistics
+```{r}
+summary(webperfo)
+```
+
+The variable `performance` has `37` missing values (NA's). The summary tells us that the `engagement` scores range from a minimum of `56.00` to a maximum of `97.00`.
+
+## 1(c) Use nrow() to count the days of website data
+```{r}
+nrow(webperfo)
+```
+
+We have `153` days of website data. This number is important for a manager because it indicates the sample size for the analysis. A larger number of days provides more reliable trends and is very important for planning statistically and forecasting.
+
+## 1(d) Use max() to find the highest engagement score
+```{r}
+max_engagement <- max(webperfo$engagement)
+max_engagement
+```
+
+The highest daily engagement score is `97`. The median engagement from the summary is `79`. This maximum score is 18 points higher than the median, indicating days with exceptionally high user activity.
+
+## 1(e) Find the best performance score with na.rm = TRUE
+```{r}
+max_performance <- max(webperfo$performance, na.rm = TRUE)
+max_performance
+```
+
+The best website performance score is 168. We needed to add `na.rm = TRUE` (which means "remove NA") because the `performance` column contains `NA` (missing) values. The `max()` function does not know how to calculate a maximum with missing data by default and will return `NA`. The `na.rm = TRUE` argument tells R to ignore the missing values and find the maximum among the existing numbers. This was not needed for finding maximum engagement because that column had no missing values.
+
+# Question 2: Understanding Relationships
+
+## 2(a) Create a basic scatter plot
+```{r}
+plot(webperfo$engagement, webperfo$performance)
+```
+
+I can somewhat see a general pattern, suggesting that as engagement (x-axis) increases, performance (y-axis) might increase at times. This plot is difficult to understand for a business presentation because it lacks a title, clear axis labels to read the metrics, and is visually plain, making it hard to understand properly.
+
+## 2(b) Improve the plot with title and labels
+```{r}
+plot(x = webperfo$engagement, y = webperfo$performance,
+     main = "User Engagement vs Website Performance",
+     xlab = "Daily User Engagement Score", 
+     ylab = "Website Performance Score")
+```
+
+The title and axis labels make the plot way more understandable than before by clearly stating what is being measured (User Engagement and Website Performance) and what the analysis is about. This is essential for a business audience to know the point of the visualization quickly without guesswork.
+
+## 2(c) Enhance the plot visually
+```{r}
+plot(x = webperfo$engagement, y = webperfo$performance,
+     main = "User Engagement vs Website Performance",
+     xlab = "Daily User Engagement Score", 
+     ylab = "Website Performance Score",
+     pch = 16, col = "blue") # pch=16 gives solid circles, col="blue" colors them
+```
+
+The visual pattern is now clearer. We can see a cloud of blue dots that generally slopes upward from left to right. In business terms, this suggests that on most days with higher user engagement scores, the website performance scores often tend to be higher too.
+
+## 2(d) Add a trend line
+```{r}
+# The plot and abline must be in the same code chunk to work together
+plot(x = webperfo$engagement, y = webperfo$performance,
+     main = "User Engagement vs Website Performance",
+     xlab = "Daily User Engagement Score", 
+     ylab = "Website Performance Score",
+     pch = 16, col = "blue")
+
+# Add the trend line (linear model line)
+abline(lm(performance ~ engagement, data = webperfo), 
+       col = "red", lwd = 2) # lwd=2 makes the line thicker
+```
+
+The red trend line is going **upwards**. This may confirm that the daily user engagement score mostly increases as the website performance score increases.
+
+# Question 3: Business Interpretation
+
+## 3(a) Calculate the correlation
+```{r}
+correlation <- cor(webperfo$engagement, webperfo$performance, use = "complete.obs")
+correlation
+```
+
+The correlation coefficient is approximately `0.698`. This represents a **moderate** relationship, which is moderately high and almost close to being a strong relationship.  
+
+## 3(b) Business implications and recommendations
+
+Based on my analysis, when performance is high, engagement also tends to be higher. This suggests that high website engagement can are caused by high performance outcomes. An e-business manager should use this insight to continue to strengthen engagement strategies by keeping the website performance high and monitor days with mismatched patterns to identify and fix technical problems which can help them to continue to grow their performance in the long run.
+
+
+
+
+
+
